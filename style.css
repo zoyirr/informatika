@@ -1,0 +1,173 @@
+/* Umumiy stil */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  position: relative; /* Barcha elementlarni joylashtirish uchun */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  background-color: #333;
+  padding: 20px 0;
+}
+
+/* Login-boxni markazlashtirish va yashirish */
+#loginBox {
+  position: fixed; /* Ekranda markazga joylashadi */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Markazlashtirish */
+  background-color: #5b5959;
+  padding: 30px;
+  border-radius: 10px;
+  color: white;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Boshqa elementlardan oldin ko‘rsatish */
+}
+
+#loginBox.hidden {
+  visibility: hidden; /* Yashirish */
+  opacity: 0; /* Yashirish */
+  pointer-events: none; /* Login-box bilan interaktivlikni yo‘q qilish */
+}
+
+ #overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+ 
+} 
+
+input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transition: 0.3s;
+}
+
+.error-message {
+  color: #ff4d4d;
+  margin-top: 10px;
+}
+
+.a {
+  background-color: red;
+  list-style: none;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  display: block;
+  margin: 10px auto;
+  padding-top: 5px;
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.a:hover {
+  background-color: rgb(0, 0, 0);
+  transition: 0.3s;
+}
+.box{
+    background-color: blue;
+}
+
+li a{
+    text-decoration: none;
+    color: white;
+    list-style: none;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+
+
+
+body{
+    background-color: rgb(216, 215, 215);
+}
+
+#box{
+    width: 700px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 30px auto;
+}
+
+h1{
+    text-align: center;
+}
+
+button{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 25px;
+    border-radius: 15px;
+    background-color: rgb(55, 55, 245);
+    color: white;
+    font-size: 18px;
+    border: none;
+}
+
+p{
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+#map{
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+
+
+.aaa{
+    background-image: url('https://blog.odya.uz/wp-content/uploads/2024/11/b9100eb0-7563-419c-b0d0-4b7f9dfd2238.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:720px;
+}

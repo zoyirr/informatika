@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: rgb(227, 227, 227);
+}
+
+.ich-ota {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.ota {
+    width: 400px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 18px;
+    height: 600px;
+    margin-top: 70px;
+    background-color: white;
+}
+
+.ich-bola {
+    border: 1px solid gray;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+input {
+    padding: 7px 10px;
+    width: 77%;
+    margin: 30px 0;
+    font-size: 17px;
+}
+
+p {
+    font-size: 19px;
+}
+
+h1 {
+    margin: 60px 0 20px;
+}
+
+h2 {
+    margin: 20px 0 50px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 19px;
+}
+
+body {
+    background-color: rgb(0, 106, 78);
+}
+
+option {
+    padding: 0px;
+    font-size: 20px;
+    background-color: white;
+}
+
+select {
+    width: 90px;
+    height: 30px;
+    border-radius: 10px;
+}

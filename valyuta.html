@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./valyuta.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<body>
+    
+<div class="ota">
+    <div class="container">
+          <h1>Curney Convertor</h1>
+          <input type="number" placeholder="Enter amount" id="input">
+          <div class="ich-ota">
+                <div class="bola">
+                     <p>From</p>
+                     <div class="ich-bola">
+                          <select id="from-select">
+                          </select>
+                     </div>
+                </div>
+                <div class="center">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="bola">
+                    <p>To</p>
+                    <div class="ich-bola">
+                         <select id="to-select">
+                         </select>
+                    </div>
+               </div>
+          </div>
+          <h2 id="result">Resultat:</h2>
+          <button id="btn">Get Exchange rate</button>
+    </div>
+</div>
+
+
+<script src="./valyuta.js"></script>
+</body>
+</html>

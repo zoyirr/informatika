@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.box {
+    width: 428px;
+    height: 526px;
+    border-radius: 50px;
+    margin: 10px auto;
+    box-shadow: -40px 60px 150px 0px #3B267BB2;
+    background: linear-gradient(229.56deg, #3E2D8F 26.99%, rgba(157, 82, 172, 0.7) 95.21%);
+    padding-top: 15px;
+}
+
+input {
+    width: 358px;
+    height: 58px;
+    border-radius: 30px;
+    font-size: 20px;
+    border: 2px solid #3E2D8F;
+    background: #fff;
+    padding: 0 20px;
+    display: block;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+::placeholder {
+    color: #fff;
+    cursor: pointer;
+}
+
+.rasm {
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.harorat {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.kun {
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+button{
+    width: 304px;
+    height: 72px;
+    border-radius: 50px;
+    color: rgba(54, 42, 132, 1);
+    border: none;
+    font-size: 28px;
+    background: rgb(255, 205, 53);
+    display: block;
+    margin: 60px auto;
+}
+button:hover{
+    background: rgb(255, 205, 53, 0.7);
+    transition: 0.3s;
+    cursor: pointer;
+    
+}

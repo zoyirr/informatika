@@ -1,0 +1,616 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+.box {
+    width: 428px;
+    height: 526px;
+    border-radius: 50px;
+    margin: 10px auto;
+    box-shadow: -40px 60px 150px 0px #3B267BB2;
+    background: linear-gradient(229.56deg, #3E2D8F 26.99%, rgba(157, 82, 172, 0.7) 95.21%);
+    padding-top: 15px;
+}
+
+input {
+    width: 358px;
+    height: 58px;
+    border-radius: 30px;
+    font-size: 20px;
+    border: 2px solid #3E2D8F;
+    background: #fff;
+    padding: 0 20px;
+    display: block;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+::placeholder {
+    color: #fff;
+    cursor: pointer;
+}
+
+.rasm {
+    text-align: center;
+}
+
+h1 {
+    font-size: 60px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.harorat {
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.kun {
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+button{
+    width: 304px;
+    height: 72px;
+    border-radius: 50px;
+    color: rgba(54, 42, 132, 1);
+    border: none;
+    font-size: 28px;
+    background: rgb(255, 205, 53);
+    display: block;
+    margin: 60px auto;
+}
+button:hover{
+    background: rgb(255, 205, 53, 0.7);
+    transition: 0.3s;
+    cursor: pointer;
+    
+}
+const input = document.getElementById("input");
+const btn = document.getElementById("btn");
+const ota = document.getElementById("ota");
+const apiKey = "0837213505e842f3a3b0490b885afd02";
+const units = "metric";
+
+async function fetchWeather() {
+    const shahar = input.value.trim();
+    if (shahar.length < 1) {
+        alert("Shaharni kiriting!");
+        return;
+    }
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${shahar}&units=${units}&appid=${apiKey}`;
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.cod !== 200) {
+            alert("Shahar topilmadi!");
+            return;
+        }
+
+        chizish(data);
+    } catch (err) {
+        console.error("Xatolik:", err);
+    }
+}
+
+function chizish(malumot) {
+    const sana = new Date();
+    const oylar = ["January", "February", "March", "April", "May", "June", "July", 
+                   "August", "September", "October", "November", "December"];
+    const oy = oylar[sana.getMonth()];
+    const kun = sana.getDate();
+
+
+
+    ota.innerHTML = `
+        <img src="./img/havo.png" alt="">
+        <h1>${malumot.main.temp}°C</h1>
+        <h2>${malumot.name}</h2>
+        <div class="harorat">
+            <p>Max: ${malumot.main.temp_max}°</p>
+            <p>Min: ${malumot.main.temp_min}°</p>
+        </div>
+        <div class="kun">
+            <h3>Today</h3>
+            <h3>${oy}, ${kun}</h3>
+        </div>
+    `;
+}
+
+btn.addEventListener("click", fetchWeather);
+
+input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        fetchWeather();
+    }
+});
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styless.css">
+    
+</head>
+<body>
+    
+    <div class="box">
+        <input type="text" id="input" placeholder="Search city"/>
+        
+        <div id="ota">
+            <img src="./img/havo.png" alt="">
+            
+            <h1>0°</h1>
+            
+            <h2>Tashkent</h2>
+            
+            <div class="harorat">
+                <p>Max: 0°</p>
+                <p>Min: 0°</p>
+            </div>
+            
+            <div class="kun">
+                <h3>Today</h3>
+                <h3>July,31</h3>
+            </div>
+        </div>
+        
+        
+        <hr>
+        
+        <button id="btn">Search</button>
+        
+    </div>
+    
+    
+    
+    <script src="./ss.js"></script>
+</body>
+</html>
+function checkLogin() {
+  const correctUsername = "zoyir";
+  const correctPassword = "2008";
+
+  const username = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const error = document.getElementById("error");
+
+  error.textContent = "";
+
+  if (username === "" || password === "") {
+    return;
+  }
+
+  if (username === correctUsername && password === correctPassword) {
+    document.getElementById("loginBox").classList.add("hidden"); // login-box ni yashirish
+    document.getElementById("overlay").style.display = "none"; // overlay ni yashirish
+  } else {
+    error.textContent = "Parol noto‘g‘ri yoki login xato!";
+  }
+}
+async function getData() {
+    const javob = await fetch('https://ipinfo.io/json');
+    const data = await javob.json();
+    console.log(data);
+    chizish(data); 
+}
+
+const box = document.getElementById('box');
+const btn = document.getElementById('btn');
+
+function chizish(malumot) {
+    box.innerHTML = `
+        <h1>Foydalanuvchi joylashuvini aniqlash</h1>
+        <button id="btn">Joylashuvni ko'rsat</button>
+        <p>Kenglik: ${malumot.loc.split(',')[0]}</p>
+        <p>Uzunlik: ${malumot.loc.split(',')[1]}</p>
+        <p>Mamlakat: ${malumot.country}</p>
+        <p>Shahar: ${malumot.city}</p>
+        <p>IP manzil: ${malumot.ip}</p>
+        <p>Internet provayder: ${malumot.org}</p>
+        <div id="map">
+        <iframe 
+    width="100%"
+    height="300"
+    frameborder="0" style="border: 0; border-radius: 20px;"
+    src="https://www.google.com/maps?q=${
+        malumot.loc.split(',')[0]
+        },${malumot.loc.split(',')[1]}&output=embed" allowfullscreen></iframe>
+        </div>
+    `;
+
+    const newBtn = document.getElementById('btn');
+    newBtn.addEventListener('click', getData);
+}
+
+btn.addEventListener('click', getData);
+
+
+const body = document.getElementsByTagName("body")[0];
+const swiperOta = document.getElementById("swiper-container");
+
+
+swiperOta.addEventListener("swiperslidechange", () => {
+    const raqam = swiperOta.swiper.realIndex;
+    switch (raqam) {
+        case 0:
+            body.style =
+                "background: linear-gradient(105.54deg, #F4A764 -2.93%, #FFDEC2 72.14%)";
+            break;
+        case 1:
+            body.style =
+                "background: linear-gradient(105.54deg, #ADB0B0 -2.93%, #E1E1E1 72.14%)";
+            break;
+        case 2:
+            body.style =
+                "background: linear-gradient(105.54deg, #30A357 -2.93%, #75E39A 72.14%)";
+            break;
+        case 3:
+            body.style =
+                "background: linear-gradient(105.54deg, #F24F4F -2.93%, #FFA895 72.14%)";
+            break;
+        default: body.style = "background: linear-gradient(105.54deg, #F4A764 -2.93%, #FFDEC2 72.14%)";
+    }
+});
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slid {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.box {
+    width: 499px;
+    height: 619px;
+}
+
+body {
+    background: linear-gradient(105.54deg, #F4A764 -2.93%, #FFDEC2 72.14%);
+
+}
+
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+li a {
+    color: #1C1415;
+    font-size: 20px;
+    list-style: none;
+    text-decoration: none;
+}
+
+a:hover{
+    font-size: 22px;
+    transition: 0.5s;
+    color: #1C1415;
+}
+
+button {
+    width: 110px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: #1C1415;
+    color: #FFFFFF;
+    font-size: 15px
+}
+
+button:hover{
+    width: 115px;
+    height: 45px;
+    font-size: 16px;
+    transition: 0.7s;
+}
+
+.ota {
+    display: flex;
+    margin-top: 50px;
+}
+
+h1 {
+    font-family: Sofia Sans;
+    font-weight: 900;
+    font-size: 76px;
+    line-height: 137%;
+    letter-spacing: -1%;
+    color: white;
+}
+
+h2 {
+    font-family: Sofia Sans;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 114.99999999999999%;
+    letter-spacing: -1%;
+    color: white;
+
+}
+
+span {
+    color: #000;
+}
+
+p {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 190%;
+    letter-spacing: 0%;
+    padding: 50px 0;
+}
+
+h3 {
+    font-family: Poppins;
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 137%;
+    letter-spacing: -1%;
+    color: #eee;
+}
+
+.mini-card{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    font-size: 25px;
+    border-radius: 50%;
+    color: white;
+}
+
+.card{
+    display: flex;
+    gap: 20px;
+    margin-top: 29px;
+}<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+
+<body>
+
+
+  <header class="container">
+    <img src="./img/Logo.png" alt="">
+
+
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Shop</a>
+          <a href="#">Brands</a>
+          <a href="#">Contact us</a>
+          <button><a href="./index.html" style="color: wheat;">qaytish</a></button>
+        </li>
+      </ul>
+    </nav>
+
+  </header>
+
+
+
+  <div class="ota container">
+
+    <div class="box1">
+      <h1>Exquisite Watches <br></h1>
+      <h2>Choose Luxury, <span>Choose Us</span></h2>
+      <p>Discover the Perfect Watch for Every Occasion <br> and Elevate Your Style with Timeless Elegance <br>and
+        Precision Craftsmanship - watch</p>
+      <h3>$430.00</h3>
+      <div class="card">
+        <div class="mini-card"><i class="fa-brands fa-facebook"></i></div>
+        <div class="mini-card"><i class="fa-brands fa-instagram"></i></div>
+        <div class="mini-card"><i class="fa-brands fa-twitter"></i></div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="box container">
+      <swiper-container class="mySwiper" navigation="true" id="swiper-container">
+
+        <swiper-slide><img src="./img/Frame 28.png" alt=""></swiper-slide>
+        <swiper-slide><img src="./img/Watches.png" alt=""></swiper-slide>
+        <swiper-slide><img src="./img/Frame 26.png" alt=""></swiper-slide>
+        <swiper-slide><img src="./img/Watches (1).png" alt=""></swiper-slide>
+
+      </swiper-container>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+  <script src="./script.js"></script>
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <a href="./index.html" class="a">qaytish</a>
+    <div id="box">
+        <h1>foydalanuvchi joylashuvini aniqlash</h1>
+        <button id="btn">Joylashuvni ko'rsat</button>
+        <p>Kenglik:</p>
+        <p>Uzunlik:</p>
+        <p>Mamlakat:</p>
+        <p>Shahar:</p>
+        <p>Ip manzil:</p>
+        <p>Internet provayder:</p>
+
+        <div id="map">
+
+        </div>
+
+    </div>
+
+
+
+    
+
+
+    <script src="./script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Sahifa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <section class="aaa">
+
+  <div id="overlay"></div>
+
+  <div class="box">
+    <div class="div container">
+    <h1>My Web Page</h1>
+    <nav>
+      <ul>
+        <li><a href="./obhavo.html">Ob-havo</a></li>
+        <li><a href="./soat.html">Soatlar</a></li>
+        <li><a href="./page2.html">Joylashuv</a></li>
+      </ul>
+    </nav>
+    </div>
+  </div>
+
+   <div id="loginBox">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Login" />
+    <input type="password" id="password" placeholder="Parol" />
+    <button onclick="checkLogin()">Kirish</button>
+    <p id="error" class="error-message"></p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+  
+  <script src="script.js"></script>
+</body>
+</html>
